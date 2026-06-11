@@ -183,17 +183,7 @@ function pageHome() {
     </div>
   </section>
 
-  <!-- cta -->
-  <section class="container section">
-    <div class="cta-band">
-      <h2>${t('cta_title')}</h2>
-      <p>${t('cta_sub')}</p>
-      <div class="cta-row center">
-        <a class="btn white lg" href="#/course/1">${t('cta_btn1')}</a>
-        <button class="btn glass lg" onclick="App.postRequestModal()">${t('cta_btn2')}</button>
-      </div>
-    </div>
-  </section>`;
+  `;
 }
 
 /* ================= courses ================= */

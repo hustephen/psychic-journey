@@ -110,8 +110,6 @@ img { max-width: 100%; }
 .btn.ghost:hover { color: var(--tx); background: rgba(148, 163, 255, .08); }
 .btn.white { background: #fff; color: #1b1b2c; }
 .btn.white:hover { transform: translateY(-1px); }
-.btn.glass { background: rgba(255, 255, 255, .14); color: #fff; backdrop-filter: blur(6px); border: 1px solid rgba(255, 255, 255, .25); }
-.btn.glass:hover { background: rgba(255, 255, 255, .22); }
 .btn.lg { padding: 13px 26px; font-size: 15.5px; border-radius: 14px; }
 .btn.sm { padding: 6px 13px; font-size: 13px; border-radius: 9px; }
 .btn.block { width: 100%; margin-top: 10px; }
@@ -126,8 +124,6 @@ img { max-width: 100%; }
 .hero2 { padding-top: 78px; padding-bottom: 10px; text-align: center; }
 .hero2 h1 { font-size: clamp(30px, 4vw, 44px); line-height: 1.22; font-weight: 800; letter-spacing: -.5px; }
 .hero-sub { color: var(--tx2); font-size: 16px; margin: 14px auto 28px; max-width: 600px; }
-.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-.cta-row.center { justify-content: center; }
 .hero-search { display: flex; gap: 10px; max-width: 640px; margin: 0 auto; }
 .hero-search .f-input { flex: 1; padding: 14px 18px; font-size: 15px; border-radius: 14px; background: rgba(148, 163, 255, .07); }
 .pop-row { margin-top: 16px; color: var(--tx3); font-size: 13px; display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
@@ -275,11 +271,6 @@ a.card:hover, .work-card:hover { transform: translateY(-3px); border-color: var(
 .deal-line { font-size: 13.5px; color: var(--grn); font-weight: 600; }
 .code-row { display: flex; align-items: center; gap: 9px; margin-top: 2px; flex-wrap: wrap; }
 .promo { flex: 1; min-width: 90px; padding: 8px 13px; border-radius: 10px; border: 1.5px dashed var(--line2); background: rgba(148, 163, 255, .05); font-weight: 800; letter-spacing: 1.5px; font-size: 13.5px; color: var(--cy); text-align: center; }
-
-/* ========= CTA band ========= */
-.cta-band { background: var(--grad); border-radius: 24px; padding: 52px 30px; text-align: center; color: #fff; box-shadow: 0 20px 60px rgba(139, 92, 246, .35); }
-.cta-band h2 { font-size: 29px; font-weight: 800; }
-.cta-band p { opacity: .92; margin: 10px 0 24px; }
 
 /* ========= detail pages ========= */
 .detail-grid { display: grid; grid-template-columns: 1fr 332px; gap: 34px; align-items: start; }

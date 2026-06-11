@@ -44,10 +44,6 @@ const I18N = {
     sec_briefs: '最新商家需求',
     sec_gigs: '优选创作者服务',
     viewAll: '查看全部',
-    cta_title: '准备好进入飞轮了吗？',
-    cta_sub: '今天免费试听一节课，下个月交付你的第一个订单。',
-    cta_btn1: '免费试听第一课',
-    cta_btn2: '发布一个需求',
 
     // courses
     courses_title: '课程中心',
@@ -358,10 +354,6 @@ const I18N = {
     sec_briefs: 'Latest client requests',
     sec_gigs: 'Top creator services',
     viewAll: 'View all',
-    cta_title: 'Ready to start the loop?',
-    cta_sub: 'Watch a free trial lesson today, deliver your first order next month.',
-    cta_btn1: 'Watch a free lesson',
-    cta_btn2: 'Post a request',
 
     courses_title: 'Courses',
     courses_sub: 'Video-first courses. Lesson 1 of every course is a free trial; enrolling unlocks all lessons plus a learners-only community board.',
