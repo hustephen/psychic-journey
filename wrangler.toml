@@ -1,20 +1,4 @@
 name = "psychic-journey"
-type = "javascript"
-
-[env.production]
-vars = { ENVIRONMENT = "production" }
-
-[build]
-command = ""
-cwd = "./"
-
-[build.upload]
-format = "service-worker"
 
 [site]
 bucket = "./public"
-include = ["*.html", "*.js", "*.json"]
-exclude = []
-
-[compatibility_flags]
-nodejs_compat = true
