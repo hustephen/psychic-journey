@@ -98,65 +98,50 @@ function toolCard(tool) {
 /* ================= home ================= */
 
 function pageHome() {
-  const flySteps = [
-    { n: '01', icon: '🎓', s: t('fly_s1'), d: t('fly_d1'), href: '#/courses' },
-    { n: '02', icon: '🤝', s: t('fly_s2'), d: t('fly_d2'), href: '#/market' },
-    { n: '03', icon: '🛠️', s: t('fly_s3'), d: t('fly_d3'), href: '#/tools' },
-    { n: '04', icon: '🚀', s: t('fly_s4'), d: t('fly_d4'), href: '#/courses' },
+  const pops = [t('pop1'), t('pop2'), t('pop3'), t('pop4')];
+  const mods = [
+    { cls: 'm1', icon: '🎓', href: '#/courses', T: t('mod1_t'), d: t('mod1_d'), cta: t('mod1_cta') },
+    { cls: 'm2', icon: '🤝', href: '#/market', T: t('mod2_t'), d: t('mod2_d'), cta: t('mod2_cta') },
+    { cls: 'm3', icon: '⬡', href: '#/studio', T: t('mod3_t'), d: t('mod3_d'), cta: t('mod3_cta') },
   ];
   return `
-  <!-- hero -->
-  <section class="hero container">
-    <div class="hero-left">
-      <div class="eyebrow">${t('hero_eyebrow')}</div>
-      <h1>${t('hero_t1')}<br><span class="grad-text">${t('hero_t2')}</span></h1>
-      <p class="hero-sub">${t('hero_sub')}</p>
-      <div class="cta-row">
-        <a class="btn primary lg" href="#/courses">${t('hero_ctaLearn')}</a>
-        <a class="btn outline lg" href="#/market">${t('hero_ctaMarket')}</a>
-      </div>
-      <div class="hero-stats">
-        ${[1, 2, 3, 4].map(i => `<div class="hstat"><b>${t('hero_s' + i + 'n')}</b><span>${t('hero_s' + i)}</span></div>`).join('')}
-      </div>
+  <!-- hero: simple, search-first -->
+  <section class="hero2 container">
+    <h1>${t('hero_title')}</h1>
+    <p class="hero-sub">${t('hero_sub')}</p>
+    <div class="hero-search">
+      <input id="hero-q" class="f-input" placeholder="${t('searchPh2')}" onkeydown="if(event.key==='Enter')App.heroSearch(this.value)">
+      <button class="btn primary" onclick="App.heroSearch(document.getElementById('hero-q').value)">${t('searchBtn')}</button>
     </div>
-    <div class="hero-right">
-      <div class="float-card fc1">
-        <div class="who">${av('ML', 'g2', 'sm')} ${state.lang === 'zh' ? '茉莉女装' : 'Jasmine Apparel'}</div>
-        <div class="fc-title">👗 ${state.lang === 'zh' ? '5 件连衣裙上身视频' : '5 dress try-on videos'}</div>
-        <div class="fc-foot"><span class="brief-budget">¥1,500–2,500</span><span class="btn primary sm">${t('participate')}</span></div>
-      </div>
-      <div class="float-card fc2">
-        <div class="fc-course-cover g1">🎬</div>
-        <div>
-          <div class="fc-title">${state.lang === 'zh' ? 'AI 视频入门' : 'AI Video 101'}</div>
-          <div class="muted sm-text">▶ ${t('trialBadge')}</div>
-        </div>
-      </div>
-      <div class="float-card fc3">
-        <div class="fc-title">⬡ AIV Studio</div>
-        <div class="gen-bar"><div class="gen-fill"></div></div>
-        <div class="muted sm-text">${t('generatingBtn')} 87%</div>
-      </div>
+    <div class="pop-row"><span>${t('hero_pop')}</span>${pops.map(p => `<button class="hot-tag" onclick="App.heroSearch('${p}')">${p}</button>`).join('')}</div>
+  </section>
+
+  <!-- three module banners -->
+  <section class="container">
+    <div class="mod-grid">
+      ${mods.map(m => `
+      <a class="mod-banner ${m.cls}" href="${m.href}">
+        <span class="mod-emoji">${m.icon}</span>
+        <h3>${m.T}</h3>
+        <p>${m.d}</p>
+        <span class="mod-cta">${m.cta} →</span>
+      </a>`).join('')}
     </div>
   </section>
 
-  <!-- flywheel -->
+  <!-- 1-2-3 loop strip -->
   <section class="container section">
-    <div class="sec-head center">
-      <div class="eyebrow">${t('fly_eyebrow')}</div>
-      <h2>${t('fly_title')}</h2>
-      <p class="sec-sub">${t('fly_sub')}</p>
-    </div>
-    <div class="fly-wrap">
-      <div class="fly-ring"></div>
-      <div class="fly-hub"><span>♻</span>${t('fly_hub')}</div>
-      ${flySteps.map((f, i) => `
-        <a class="fly-node n${i + 1}" href="${f.href}">
-          <div class="fly-num">${f.n}</div>
-          <div class="fly-icon">${f.icon}</div>
-          <h4>${f.s}</h4>
-          <p>${f.d}</p>
-        </a>`).join('')}
+    <div class="loop-strip">
+      <span class="loop-title">${t('loop_title')}</span>
+      <div class="loop-steps">
+        <span class="loop-step"><b>1</b>${t('loop_s1')}</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-step"><b>2</b>${t('loop_s2')}</span>
+        <span class="loop-arrow">→</span>
+        <span class="loop-step"><b>3</b>${t('loop_s3')}</span>
+        <span class="loop-back">↻ ${t('loop_back')}</span>
+      </div>
+      <span class="trust-mini">${t('trust1')} · ${t('trust2')} · ${t('trust3')}</span>
     </div>
   </section>
 
@@ -195,18 +180,6 @@ function pageHome() {
           </a>`).join('')}
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- tools strip -->
-  <section class="container section">
-    <div class="sec-head">
-      <div><h2>${t('sec_tools')}</h2><p class="sec-sub">${t('sec_tools_sub')}</p></div>
-      <a class="btn ghost" href="#/tools">${t('viewAll')} →</a>
-    </div>
-    <div class="tool-strip">
-      <a class="tool-pill studio-pill" href="#/studio"><span class="tool-logo g1">⬡</span> AIV Studio <span class="beta-tag">Beta</span></a>
-      ${DATA.tools.map(x => `<a class="tool-pill" href="#/tools"><span class="tool-logo ${x.grad}">${x.emoji}</span> ${x.name}</a>`).join('')}
     </div>
   </section>
 
@@ -301,6 +274,48 @@ function communityHTML(c) {
     ${list}`;
 }
 
+function genericChat() {
+  return [
+    { a: { zh: '小柚', en: 'Yuzu' }, i: 'XY', g: 'g4', time: { zh: '13:20', en: '13:20' }, c: { zh: '有人一起组队接第一单吗？', en: 'Anyone want to team up for a first order?' } },
+    { a: { zh: '一帆', en: 'Evan' }, i: 'YF', g: 'g6', time: { zh: '13:24', en: '13:24' }, c: { zh: '第 3 节的素材包在社区置顶里，自取', en: 'The Lesson 3 asset pack is pinned in the community — grab it there' } },
+    { a: { zh: '阿杰', en: 'AJ' }, i: 'AJ', g: 'g4', time: { zh: '13:31', en: '13:31' }, c: { zh: '今晚 8 点老师直播答疑，别错过', en: 'Instructor live Q&A at 8pm tonight, don’t miss it' } },
+  ];
+}
+
+function chatroomHTML(c) {
+  const enrolled = state.enrolled[c.id] !== undefined;
+  const msgs = (c.chat && c.chat.length) ? c.chat : genericChat();
+  const list = msgs.map(m => `
+    <div class="cr-msg ${m.me ? 'me' : ''}">${av(m.i, m.g, 'sm')}
+      <div class="cr-body">
+        <div class="cr-meta"><b>${L(m.a)}</b><span>${L(m.time)}</span></div>
+        <p>${esc(L(m.c))}</p>
+      </div>
+    </div>`).join('');
+
+  if (!enrolled) {
+    return `
+    <div class="community-locked">
+      <div class="cl-blur"><div class="chatroom"><div class="cr-list" style="height:300px">${list}</div></div></div>
+      <div class="cl-overlay">
+        <div class="cl-lock">💬</div>
+        <h3>${t('chatLocked')}</h3>
+        <p>${t('chatLockedSub')}</p>
+        <button class="btn primary" onclick="App.enrollModal(${c.id})">${t('unlockBtn')} · ${money(c.price)}</button>
+      </div>
+    </div>`;
+  }
+  return `
+  <div class="chatroom">
+    <div class="cr-head"><span class="dot-on"></span>${t('chat_online', { n: 20 + c.id * 3 })}</div>
+    <div class="cr-list" id="cr-list">${list}</div>
+    <div class="cr-input">
+      <input id="cr-input" class="f-input" placeholder="${t('chatroom_ph')}" onkeydown="if(event.key==='Enter')App.sendCourseChat(${c.id})">
+      <button class="btn primary" onclick="App.sendCourseChat(${c.id})">${t('sendBtn')}</button>
+    </div>
+  </div>`;
+}
+
 function courseTabsHTML(c) {
   const tab = state.courseTab;
   let body = '';
@@ -315,16 +330,18 @@ function courseTabsHTML(c) {
           <b>${L(c.instructor.name)}</b>
           <p class="muted">${L(c.instructor.title)}</p>
         </div>
-        <button class="btn outline sm" onclick="App.follow()">${t('followBtn')}</button>
+        <a class="btn outline sm" href="#/instructor/${c.instructor.id}">${t('viewInstructor')} →</a>
       </div>`;
   } else if (tab === 'curriculum') {
     body = curriculumHTML(c);
+  } else if (tab === 'chat') {
+    body = chatroomHTML(c);
   } else {
     body = communityHTML(c);
   }
   return `
     <div class="tabs">
-      ${['overview', 'curriculum', 'community'].map(x => `<button class="tab ${tab === x ? 'on' : ''}" onclick="App.setCourseTab('${x}',${c.id})">${t('tab_' + x)}${x === 'community' && state.enrolled[c.id] === undefined ? ' 🔒' : ''}</button>`).join('')}
+      ${['overview', 'curriculum', 'community', 'chat'].map(x => `<button class="tab ${tab === x ? 'on' : ''}" onclick="App.setCourseTab('${x}',${c.id})">${t('tab_' + x)}${(x === 'community' || x === 'chat') && state.enrolled[c.id] === undefined ? ' 🔒' : ''}</button>`).join('')}
     </div>
     <div class="tab-body">${body}</div>`;
 }
@@ -382,6 +399,12 @@ function pageCourse(id) {
           <li>🎓 ${t('inc3')}</li>
           <li>📦 ${t('inc4')}</li>
         </ul>
+        <div class="cert-line">🎓 ${(() => {
+          const myCert = DATA.profile.certs.find(x => x.course === c.id);
+          return myCert
+            ? `${t('cert_holder', { n: myCert.serial.toLocaleString() })} · ✓ ${t('certVerified')}`
+            : `${t('cert_issued', { n: c.certIssued.toLocaleString() })} · ${t('cert_next', { n: (c.certIssued + 1).toLocaleString() })}`;
+        })()}</div>
       </div>
       <div class="card side-card next-card">
         <div class="eyebrow">${t('recommendNext')}</div>
@@ -400,10 +423,10 @@ function marketGridHTML() {
   const q = state.marketQ;
   const cat = state.marketCat;
   if (state.marketTab === 'briefs') {
-    const list = DATA.briefs.filter(b => (cat === 'all' || b.cat === cat) && (!q || L(b.title).toLowerCase().includes(q) || L(b.desc).toLowerCase().includes(q)));
+    const list = DATA.briefs.filter(b => (cat === 'all' || b.cat === cat) && matchQ(q, b.title, b.desc));
     return list.length ? `<div class="grid cols2">${list.map(briefCard).join('')}</div>` : `<div class="empty">🔍</div>`;
   }
-  const list = DATA.gigs.filter(g => (cat === 'all' || g.cat === cat) && (!q || L(g.title).toLowerCase().includes(q)));
+  const list = DATA.gigs.filter(g => (cat === 'all' || g.cat === cat) && matchQ(q, g.title));
   return list.length ? `<div class="grid cols3">${list.map(gigCard).join('')}</div>` : `<div class="empty">🔍</div>`;
 }
 
@@ -432,7 +455,7 @@ function pageMarket() {
       </div>
     </div>
     <div class="search-row">
-      <input class="f-input search" placeholder="${t('searchPh')}" oninput="App.marketSearch(this.value)">
+      <input class="f-input search" placeholder="${t('searchPh')}" value="${esc(state.marketQ)}" oninput="App.marketSearch(this.value)">
     </div>
   </section>
   <section class="container section" id="market-list">${marketListHTML()}</section>
@@ -470,16 +493,19 @@ function pageBrief(id) {
 
       <h3 class="block-title">${t('proposalsTitle')} <span class="count">${b.proposals.length}</span></h3>
       <div class="stack">
-        ${b.proposals.map(p => `
+        ${b.proposals.map((p, i) => `
           <div class="card proposal">
             <div class="post-head">
-              <span class="who">${av(p.i, p.g, 'sm')} <b>${L(p.name)}</b></span>
+              <span class="who">${av(p.i, p.g, 'sm')} <b>${L(p.name)}</b> ${b.accepted === i ? `<span class="status open">✓ ${t('acceptedBadge')}</span>` : ''}</span>
               <span class="muted sm-text">${L(p.time)}</span>
             </div>
             <p class="post-body">${L(p.note)}</p>
             <div class="proposal-foot">
               <span class="brief-budget">${money(p.price)}</span>
-              ${b.mine ? `<button class="btn outline sm" onclick="App.openChat('${esc(L(p.name))}')">💬 ${t('chatToRefine')}</button>` : ''}
+              <span class="prop-actions">
+                <a class="btn ghost sm" href="#/proposal/${b.id}/${i}">${t('viewProposal')} →</a>
+                ${b.mine ? `<button class="btn outline sm" onclick="App.openChat('${esc(L(p.name))}')">💬 ${t('chatToRefine')}</button>` : ''}
+              </span>
             </div>
           </div>`).join('') || `<div class="empty">💭</div>`}
       </div>
@@ -501,6 +527,7 @@ function pageBrief(id) {
       <div class="card side-card">
         <h4>${t('aboutClient')}</h4>
         <div class="who lg">${av(b.client.i, b.client.g)} <div><b>${L(b.client.name)}</b><div class="muted sm-text">${L(b.client.info)}</div></div></div>
+        ${b.mine ? '' : `<a class="btn outline block" href="#/client/${b.clientId}">${t('viewClient')} →</a>`}
       </div>
       <div class="card side-card hw-mini">
         <h4>${t('howWorks')}</h4>
@@ -588,29 +615,164 @@ function pageGig(id) {
   </section>`;
 }
 
-/* ================= tools ================= */
+/* ================= client profile ================= */
 
-function pageTools() {
+function pageClient(id) {
+  const cl = DATA.clients.find(x => x.id === id) || DATA.clients[0];
+  const briefs = DATA.briefs.filter(b => b.clientId === cl.id);
   return `
   <section class="container page-head">
-    <h1>${t('tools_title')}</h1>
-    <p class="sec-sub">${t('tools_sub')}</p>
+    <a class="crumb" href="#/market">← ${t('market_title')}</a>
+    <div class="id-card">
+      ${av(cl.i, cl.g, 'xl')}
+      <div class="profile-info">
+        <h1>${L(cl.name)} ${cl.verified ? `<span class="vbadge">✓ ${t('verified')}</span>` : ''}</h1>
+        <div class="role-row">
+          <span class="role-badge client">📣 ${t('roleClient')}</span>
+          <span class="muted sm-text">${L(cl.kind)} · 📍 ${L(cl.loc)} · ${L(cl.joined)}</span>
+        </div>
+        <p class="muted">${L(cl.bio)}</p>
+      </div>
+      <div class="profile-actions">
+        <button class="btn primary" onclick="App.openChat('${esc(L(cl.name))}')">💬 ${t('chatToRefine')}</button>
+        <button class="btn outline" onclick="App.follow()">${t('followBtn')}</button>
+      </div>
+    </div>
+    <div class="pstats">
+      <div class="pstat"><b>${cl.stats.posted}</b><span>${t('cl_posted')}</span></div>
+      <div class="pstat"><b>${cl.stats.hired}</b><span>${t('cl_hired')}</span></div>
+      <div class="pstat"><b>${cl.stats.spent}</b><span>${t('cl_spent')}</span></div>
+      <div class="pstat"><b>${cl.stats.onpay}</b><span>${t('cl_onpay')}</span></div>
+    </div>
   </section>
   <section class="container section">
-    <a class="studio-banner" href="#/studio">
-      <div class="sb-left">
-        <div class="sb-title">⬡ ${t('studioCardTitle')} <span class="beta-tag">${t('studioCardBeta')}</span></div>
-        <p>${t('studioCardSub')}</p>
-        <span class="btn white">${t('openStudio')} →</span>
+    <h3 class="block-title top0">${t('cl_active')} <span class="count">${briefs.length}</span></h3>
+    ${briefs.length ? `<div class="grid cols2">${briefs.map(briefCard).join('')}</div>` : `<div class="empty">📭</div>`}
+    <h3 class="block-title">${t('cl_reviews')}</h3>
+    <div class="stack">
+      ${cl.reviews.map(r => `
+        <div class="card proposal">
+          <div class="post-head">
+            <span class="who">${av(r.i, r.g, 'sm')} <b>${L(r.name)}</b></span>
+            <span>${stars(r.rating)} <span class="muted sm-text">${L(r.time)}</span></span>
+          </div>
+          <p class="post-body">${L(r.text)}</p>
+        </div>`).join('')}
+    </div>
+  </section>`;
+}
+
+/* ================= instructor profile ================= */
+
+function pageInstructor(id) {
+  const ins = DATA.instructors.find(x => x.id === id) || DATA.instructors[0];
+  const courses = ins.courses.map(cid => DATA.courses.find(c => c.id === cid)).filter(Boolean);
+  const students = courses.reduce((s, c) => s + c.students, 0);
+  const certs = courses.reduce((s, c) => s + c.certIssued, 0);
+  const rating = (courses.reduce((s, c) => s + c.rating, 0) / courses.length).toFixed(1);
+  const gig = ins.gigId ? DATA.gigs.find(g => g.id === ins.gigId) : null;
+  return `
+  <section class="container page-head">
+    <a class="crumb" href="#/courses">← ${t('courses_title')}</a>
+    <div class="id-card">
+      ${av(ins.i, ins.g, 'xl')}
+      <div class="profile-info">
+        <h1>${L(ins.name)}</h1>
+        <div class="role-row">
+          <span class="role-badge creator">🎓 ${t('aboutInstructor')}</span>
+          <span class="muted sm-text">${L(ins.title)}</span>
+        </div>
+        <p class="muted">${L(ins.bio)}</p>
       </div>
-      <div class="sb-right">
-        <div class="sb-prompt">"${state.lang === 'zh' ? '模特身穿白色连衣裙在日落海边行走…' : 'A model in a white dress walking on a sunset beach…'}"</div>
-        <div class="gen-bar"><div class="gen-fill"></div></div>
+      <div class="profile-actions">
+        <button class="btn primary" onclick="App.follow()">${t('followBtn')}</button>
+        <button class="btn outline" onclick="App.openChat('${esc(L(ins.name))}')">${t('msgBtn')}</button>
       </div>
-    </a>
+    </div>
+    <div class="pstats">
+      <div class="pstat"><b>${students.toLocaleString()}</b><span>${t('ins_students')}</span></div>
+      <div class="pstat"><b>${courses.length}</b><span>${t('ins_courses')}</span></div>
+      <div class="pstat"><b>★ ${rating}</b><span>${t('st_rating')}</span></div>
+      <div class="pstat"><b>${certs.toLocaleString()}</b><span>${t('ins_certs')}</span></div>
+    </div>
   </section>
   <section class="container section">
-    <div class="grid cols3">${DATA.tools.map(toolCard).join('')}</div>
+    <h3 class="block-title top0">${t('ins_coursesTitle')}</h3>
+    <div class="grid cols3">${courses.map(courseCard).join('')}</div>
+    ${gig ? `
+    <h3 class="block-title">${t('ins_gig')}</h3>
+    <a class="card gig-row" href="#/gig/${gig.id}">
+      <div class="gig-row-cover ${gig.grad}">${gig.emoji}</div>
+      <div class="gig-row-body">
+        <h3 class="card-title clamp1">${L(gig.title)}</h3>
+        <div class="meta-row"><span class="rating">★ ${gig.seller.rating}</span><span>(${gig.seller.reviews})</span></div>
+      </div>
+      <div class="gig-row-price"><span class="muted sm-text">${t('fromLabel')}</span> <b>${money(gig.from)}</b></div>
+    </a>` : ''}
+    <h3 class="block-title">${t('ins_reviews')}</h3>
+    <div class="stack">
+      ${ins.reviews.map(r => `
+        <div class="card proposal">
+          <div class="post-head">
+            <span class="who">${av(r.i, r.g, 'sm')} <b>${L(r.name)}</b></span>
+            <span>${stars(r.rating)} <span class="muted sm-text">${L(r.time)}</span></span>
+          </div>
+          <p class="post-body">${L(r.text)}</p>
+        </div>`).join('')}
+    </div>
+  </section>`;
+}
+
+/* ================= proposal detail ================= */
+
+function pageProposal(bid, idx) {
+  const b = DATA.briefs.find(x => x.id === bid) || DATA.briefs[0];
+  if (!b.proposals.length) return pageBrief(b.id);
+  const i = Math.min(Math.max(idx || 0, 0), b.proposals.length - 1);
+  const p = b.proposals[i];
+  const accepted = b.accepted === i;
+  return `
+  <section class="container detail-grid section">
+    <div class="detail-main">
+      <a class="crumb" href="#/brief/${b.id}">← ${L(b.title)}</a>
+      <h1 class="detail-title">${t('prop_title')} ${accepted ? `<span class="status open">✓ ${t('acceptedBadge')}</span>` : ''}</h1>
+      <div class="who lg">${av(p.i, p.g)} <div><b>${L(p.name)}</b><div class="muted sm-text">${L(p.time)}</div></div></div>
+      <p class="detail-desc">${L(p.note)}</p>
+
+      ${p.plan ? `
+      <h3 class="block-title">${t('prop_plan')}</h3>
+      <div class="card req-card"><ol class="plan-list">${p.plan.map(s => `<li>${L(s)}</li>`).join('')}</ol></div>` : ''}
+
+      ${p.works ? `
+      <h3 class="block-title">${t('prop_works')}</h3>
+      <div class="grid cols3">
+        ${p.works.map(w => `
+        <div class="card work-card" onclick="App.demo()">
+          <div class="cover sm ${w.grad}"><span class="cover-emoji">${w.emoji}</span><i class="play-mini">▶</i></div>
+          <div class="card-body tight">
+            <h3 class="card-title clamp1">${L(w.title)}</h3>
+            <div class="muted sm-text">▶ ${w.views} ${t('viewsSuffix')}</div>
+          </div>
+        </div>`).join('')}
+      </div>` : ''}
+    </div>
+
+    <aside class="detail-side">
+      <div class="card side-card">
+        <div class="side-budget-label">${t('prop_quote')}</div>
+        <div class="side-price">${money(p.price)}</div>
+        <div class="side-rows">
+          ${p.days ? `<div class="side-row"><span>⏱ ${t('prop_eta')}</span><b>${p.days} ${t('daysSuffix')}</b></div>` : ''}
+          <div class="side-row"><span>📣 ${t('budget')}</span><b>${money(b.budget[0])}–${money(b.budget[1])}</b></div>
+          <div class="side-row"><span>🛡 ${t('escrow')}</span><b>✓</b></div>
+        </div>
+        ${b.mine ? (accepted
+          ? `<div class="side-enrolled">✓ ${t('acceptedBadge')}</div>`
+          : `<button class="btn primary block" onclick="App.acceptProposal(${b.id},${i})">✓ ${t('acceptProposal')}</button>`)
+        : ''}
+        <button class="btn outline block" onclick="App.openChat('${esc(L(p.name))}')">💬 ${t('chatToRefine')}</button>
+      </div>
+    </aside>
   </section>`;
 }
 
@@ -686,6 +848,12 @@ function pageStudio() {
           </div>`).join('')}
       </div>` : `<div class="empty">${t('queueEmpty')}</div>`}
     </div>
+  </section>
+  <section class="container section">
+    <div class="sec-head">
+      <div><h2>${t('tools_title')}</h2><p class="sec-sub">${t('tools_sub2')}</p></div>
+    </div>
+    <div class="grid cols3">${DATA.tools.map(toolCard).join('')}</div>
   </section>`;
 }
 
@@ -871,7 +1039,7 @@ function pageProfile() {
           ${certCourses.map(c => `
             <a class="cert-card" href="#/course/${c.course.id}">
               <span class="cert-icon ${c.course.grad}">🎓</span>
-              <div><b>${L(c.course.title)}</b><div class="muted sm-text">✓ ${t('certVerified')} · ${L(c.date)}</div></div>
+              <div><b>${L(c.course.title)}</b><div class="muted sm-text">✓ ${t('certVerified')} · ${L(c.date)} · ${t('cert_holder', { n: c.serial.toLocaleString() })}</div></div>
             </a>`).join('')}
         </div>
       </div>

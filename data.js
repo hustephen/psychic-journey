@@ -8,8 +8,8 @@ const DATA = {
       id: 1, emoji: '🎬', grad: 'g1', level: 'beginner',
       title: { zh: 'AI 视频入门：从零做出第一支片', en: 'AI Video 101: Zero to Your First Reel' },
       tagline: { zh: '不懂剪辑、不懂模型也能上手，10 节课做出能发布的作品', en: 'No editing or model background needed — publish a real video in 10 lessons' },
-      price: 299, oldPrice: 399, rating: 4.9, students: 3280, hours: 6.5,
-      instructor: { name: { zh: '陆远', en: 'Lu Yuan' }, title: { zh: '前 MCN 内容总监 · 全网粉丝 120w', en: 'Ex-MCN content director · 1.2M followers' }, i: 'LY', g: 'g5' },
+      price: 299, oldPrice: 399, rating: 4.9, students: 3280, hours: 6.5, certIssued: 1247,
+      instructor: { id: 1, name: { zh: '陆远', en: 'Lu Yuan' }, title: { zh: '前 MCN 内容总监 · 全网粉丝 120w', en: 'Ex-MCN content director · 1.2M followers' }, i: 'LY', g: 'g5' },
       tags: [ { zh: '零基础', en: 'Beginner-friendly' }, { zh: '全流程', en: 'Full workflow' } ],
       learn: [
         { zh: '看懂 AIGC 视频的工具版图，知道每一步用什么', en: 'Map the AIGC video tool landscape and know what to use at each step' },
@@ -35,8 +35,8 @@ const DATA = {
       id: 2, emoji: '🛍️', grad: 'g2', level: 'intermediate',
       title: { zh: '电商带货视频实战', en: 'E-commerce Videos That Sell' },
       tagline: { zh: '从详情页到信息流：服装、3C、食品的 AI 视频量产打法', en: 'From product pages to feeds: mass-producing AI videos for apparel, gadgets & food' },
-      price: 499, oldPrice: 699, rating: 4.9, students: 2140, hours: 8,
-      instructor: { name: { zh: '乔安', en: 'Joan Qiao' }, title: { zh: '服务 200+ 淘宝/抖音商家的视频操盘手', en: 'Video lead for 200+ Taobao & Douyin merchants' }, i: 'QA', g: 'g2' },
+      price: 499, oldPrice: 699, rating: 4.9, students: 2140, hours: 8, certIssued: 1190,
+      instructor: { id: 2, name: { zh: '乔安', en: 'Joan Qiao' }, title: { zh: '服务 200+ 淘宝/抖音商家的视频操盘手', en: 'Video lead for 200+ Taobao & Douyin merchants' }, i: 'QA', g: 'g2' },
       tags: [ { zh: '电商', en: 'E-commerce' }, { zh: '可接单', en: 'Order-ready' } ],
       learn: [
         { zh: '拆解爆款商品视频的脚本与镜头公式', en: 'Deconstruct the script & shot formulas behind best-selling product videos' },
@@ -66,13 +66,19 @@ const DATA = {
         { a: { zh: '半夏', en: 'Banxia' }, i: 'BX', g: 'g6', time: { zh: '昨天', en: 'Yesterday' }, replies: 21, likes: 64,
           c: { zh: '完课打卡✅ 顺手在市场接了人生第一单（¥380），感谢乔安老师的报价模板！', en: 'Course complete ✅ and just took my first-ever order (¥380) in the marketplace. Thanks for the pricing template, Joan!' } },
       ],
+      chat: [
+        { a: { zh: '林可可', en: 'Coco Lin' }, i: 'LK', g: 'g3', time: { zh: '14:02', en: '14:02' }, c: { zh: '有人接过羽绒服的上身单吗？反光材质好难弄', en: 'Anyone done a puffer-jacket try-on order? Reflective fabric is brutal' } },
+        { a: { zh: '阿杰', en: 'AJ' }, i: 'AJ', g: 'g4', time: { zh: '14:05', en: '14:05' }, c: { zh: '降低高光对比 + 第 7 课的灯光参数，亲测有效', en: 'Lower the highlight contrast + Lesson 7 lighting settings — tested, works' } },
+        { a: { zh: '乔安（讲师）', en: 'Joan (Instructor)' }, i: 'QA', g: 'g2', time: { zh: '14:11', en: '14:11' }, c: { zh: '今晚 8 点直播拆一个羽绒服案例，蹲！', en: 'Live at 8pm tonight — breaking down a puffer-jacket case. Be there!' } },
+        { a: { zh: '半夏', en: 'Banxia' }, i: 'BX', g: 'g6', time: { zh: '14:12', en: '14:12' }, c: { zh: '蹲 +1，顺便求一个详情页规格的导出预设', en: '+1, also looking for a product-page export preset if anyone has one' } },
+      ],
     },
     {
       id: 3, emoji: '🧑‍💼', grad: 'g6', level: 'beginner',
       title: { zh: 'AI 数字人与口播视频', en: 'AI Avatars & Talking-Head Videos' },
       tagline: { zh: '克隆声音、定制数字人，批量生产口播与知识类视频', en: 'Clone voices, build avatars, and batch-produce spoken-word content' },
-      price: 399, oldPrice: 499, rating: 4.8, students: 1860, hours: 7,
-      instructor: { name: { zh: '黎声', en: 'Li Sheng' }, title: { zh: '数字人账号矩阵操盘手 · 单月营收 30w', en: 'Avatar-channel operator · ¥300k monthly revenue' }, i: 'LS', g: 'g1' },
+      price: 399, oldPrice: 499, rating: 4.8, students: 1860, hours: 7, certIssued: 760,
+      instructor: { id: 3, name: { zh: '黎声', en: 'Li Sheng' }, title: { zh: '数字人账号矩阵操盘手 · 单月营收 30w', en: 'Avatar-channel operator · ¥300k monthly revenue' }, i: 'LS', g: 'g1' },
       tags: [ { zh: '数字人', en: 'Avatars' }, { zh: '口播', en: 'Talking-head' } ],
       learn: [
         { zh: '搭建你自己的数字人主播与声音克隆', en: 'Build your own virtual presenter with a cloned voice' },
@@ -98,8 +104,8 @@ const DATA = {
       id: 4, emoji: '✨', grad: 'g5', level: 'advanced',
       title: { zh: '视频模型提示词进阶', en: 'Advanced Prompting for Video Models' },
       tagline: { zh: '吃透 Seedance / 可灵 / Runway：运镜语法、角色一致性与多镜头叙事', en: 'Master Seedance / Kling / Runway: camera grammar, character consistency & multi-shot stories' },
-      price: 599, oldPrice: 799, rating: 5.0, students: 980, hours: 9,
-      instructor: { name: { zh: 'Nova', en: 'Nova' }, title: { zh: 'AIGC 视频大赛双料冠军', en: 'Two-time AIGC video competition champion' }, i: 'NV', g: 'g8' },
+      price: 599, oldPrice: 799, rating: 5.0, students: 980, hours: 9, certIssued: 412,
+      instructor: { id: 4, name: { zh: 'Nova', en: 'Nova' }, title: { zh: 'AIGC 视频大赛双料冠军', en: 'Two-time AIGC video competition champion' }, i: 'NV', g: 'g8' },
       tags: [ { zh: '提示词', en: 'Prompting' }, { zh: '高阶', en: 'Advanced' } ],
       learn: [
         { zh: '掌握「主体/运动/运镜/风格」四要素提示词框架', en: 'Master the subject / motion / camera / style prompt framework' },
@@ -125,8 +131,8 @@ const DATA = {
       id: 5, emoji: '🎞️', grad: 'g4', level: 'intermediate',
       title: { zh: '剪辑与节奏：电影感养成', en: 'Editing & Pacing: The Cinematic Feel' },
       tagline: { zh: 'AI 素材也能剪出质感：卡点、调色、声音设计一站搞定', en: 'Make AI footage feel premium: beat cuts, color and sound design in one course' },
-      price: 349, oldPrice: 449, rating: 4.8, students: 1520, hours: 6,
-      instructor: { name: { zh: '老白', en: 'Bai' }, title: { zh: '前广告公司剪辑指导 · 10 年经验', en: 'Ex-agency editing director · 10 years' }, i: 'LB', g: 'g7' },
+      price: 349, oldPrice: 449, rating: 4.8, students: 1520, hours: 6, certIssued: 688,
+      instructor: { id: 5, name: { zh: '老白', en: 'Bai' }, title: { zh: '前广告公司剪辑指导 · 10 年经验', en: 'Ex-agency editing director · 10 years' }, i: 'LB', g: 'g7' },
       tags: [ { zh: '剪辑', en: 'Editing' }, { zh: '调色', en: 'Color' } ],
       learn: [
         { zh: '理解什么让画面「有电影感」', en: 'Understand what makes footage feel cinematic' },
@@ -152,8 +158,8 @@ const DATA = {
       id: 6, emoji: '💼', grad: 'g3', level: 'beginner',
       title: { zh: '接单实战手册：定价、沟通与交付', en: 'The Freelancer Playbook: Pricing, Clients & Delivery' },
       tagline: { zh: '把手艺变现金流：在 AIV 市场从 0 到月入过万的完整打法', en: 'Turn craft into cash flow: the full path from ¥0 to ¥10k+/month on the AIV marketplace' },
-      price: 259, oldPrice: 329, rating: 4.9, students: 2750, hours: 5,
-      instructor: { name: { zh: '苏苏', en: 'Susu' }, title: { zh: 'AIV 市场 Top 创作者 · 复购率 62%', en: 'Top AIV marketplace creator · 62% repeat rate' }, i: 'SS', g: 'g3' },
+      price: 259, oldPrice: 329, rating: 4.9, students: 2750, hours: 5, certIssued: 935,
+      instructor: { id: 6, name: { zh: '苏苏', en: 'Susu' }, title: { zh: 'AIV 市场 Top 创作者 · 复购率 62%', en: 'Top AIV marketplace creator · 62% repeat rate' }, i: 'SS', g: 'g3' },
       tags: [ { zh: '接单', en: 'Freelancing' }, { zh: '变现', en: 'Monetization' } ],
       learn: [
         { zh: '选一个有钱赚的细分定位', en: 'Pick a niche that actually pays' },
@@ -181,13 +187,18 @@ const DATA = {
         { a: { zh: '张小川', en: 'Riley Zhang' }, i: 'ZX', g: 'g1', time: { zh: '昨天', en: 'Yesterday' }, replies: 15, likes: 58,
           c: { zh: '完课一个月战报：7 单，¥4,280。最大的心得是第 4 课——别按条数定价，按「商家省下的时间」定价。', en: 'One month after finishing: 7 orders, ¥4,280. Biggest takeaway is Lesson 4 — price by the time you save the client, not per clip.' } },
       ],
+      chat: [
+        { a: { zh: '木鱼', en: 'Muyu' }, i: 'MY', g: 'g5', time: { zh: '20:31', en: '20:31' }, c: { zh: '刚有个商家砍价砍到骨折，大家都怎么回的？', en: 'A client just lowballed me hard — how do you all respond?' } },
+        { a: { zh: '苏苏（讲师）', en: 'Susu (Instructor)' }, i: 'SS', g: 'g3', time: { zh: '20:34', en: '20:34' }, c: { zh: '别降价，降范围：减一次修改或少一个规格，价值感就保住了', en: 'Don’t cut the price, cut the scope: one fewer revision or format keeps your value intact' } },
+        { a: { zh: '半夏', en: 'Banxia' }, i: 'BX', g: 'g6', time: { zh: '20:36', en: '20:36' }, c: { zh: '学到了，这就去改报价话术', en: 'Noted — updating my quote script right now' } },
+      ],
     },
   ],
 
   /* ---------- Marketplace: client requests (briefs) ---------- */
   briefs: [
     {
-      id: 1, emoji: '👗', grad: 'g2', cat: 'ecom', status: 'open',
+      id: 1, emoji: '👗', grad: 'g2', cat: 'ecom', status: 'open', clientId: 1,
       title: { zh: '淘宝女装：5 件连衣裙的模特上身展示视频', en: 'Taobao apparel: on-model try-on videos for 5 dresses' },
       client: { name: { zh: '茉莉女装', en: 'Jasmine Apparel' }, i: 'ML', g: 'g2', verified: true, info: { zh: '淘宝女装店 · 4 皇冠 · 发布过 12 个需求', en: 'Taobao womenswear shop · 4-crown · 12 requests posted' } },
       budget: [1500, 2500], deadline: 7, joined: 8,
@@ -200,13 +211,43 @@ const DATA = {
         { zh: '7 天内交付，先出 1 条小样确认风格', en: 'Deliver within 7 days; 1 sample first to confirm style' },
       ],
       proposals: [
-        { name: { zh: '林可可', en: 'Coco Lin' }, i: 'LK', g: 'g3', price: 1800, time: { zh: '1 小时前', en: '1h ago' }, note: { zh: '做过 30+ 服装上身视频（案例见主页），可今晚先出 1 条小样确认风格。', en: '30+ apparel try-on videos delivered (see my profile). I can send a style-confirmation sample tonight.' } },
-        { name: { zh: '阿杰', en: 'AJ' }, i: 'AJ', g: 'g4', price: 2200, time: { zh: '3 小时前', en: '3h ago' }, note: { zh: '真人模特实拍 + AI 补镜头的混合方案，质感更稳，含 2 次修改。', en: 'Hybrid plan: real-model shoot + AI pickup shots for steadier quality. Two revisions included.' } },
-        { name: { zh: '半夏', en: 'Banxia' }, i: 'BX', g: 'g6', price: 1500, time: { zh: '昨天', en: 'Yesterday' }, note: { zh: '纯 AI 模特方案，性价比高，3 天可交付全部 5 条。', en: 'Pure AI-model plan, best value — all 5 videos in 3 days.' } },
+        { name: { zh: '林可可', en: 'Coco Lin' }, i: 'LK', g: 'g3', price: 1800, days: 5, time: { zh: '1 小时前', en: '1h ago' },
+          note: { zh: '做过 30+ 服装上身视频（案例见下方），最熟悉连衣裙类目：垂感、走动时的摆动和光影是我重点打磨的三个点。可今晚先出 1 条小样确认风格，确认后批量推进，全程在平台内沟通和交付。', en: '30+ apparel try-on videos delivered (samples below), with dresses as my main category — drape, swing while walking, and lighting are the three things I obsess over. I can send a style-confirmation sample tonight, then batch-produce after sign-off. All communication and delivery on-platform.' },
+          plan: [
+            { zh: '今晚出 1 条小样确认风格（不满意不收费）', en: 'Style-confirmation sample tonight (free if not satisfied)' },
+            { zh: '确认后 3 天内交付全部 5 条 + 双规格导出', en: 'All 5 videos within 3 days of sign-off, dual-format export' },
+            { zh: '含 2 次修改与商用授权', en: 'Two revisions and commercial license included' },
+          ],
+          works: [
+            { grad: 'g2', emoji: '👗', title: { zh: '连衣裙上身 · 法式风', en: 'Dress try-on · French style' }, views: '12k' },
+            { grad: 'g6', emoji: '👚', title: { zh: '衬衫上身 · 通勤风', en: 'Blouse try-on · Office style' }, views: '8.4k' },
+            { grad: 'g4', emoji: '🧥', title: { zh: '大衣上身 · 秋冬款', en: 'Coat try-on · Fall/Winter' }, views: '6.1k' },
+          ] },
+        { name: { zh: '阿杰', en: 'AJ' }, i: 'AJ', g: 'g4', price: 2200, days: 7, time: { zh: '3 小时前', en: '3h ago' },
+          note: { zh: '建议真人模特实拍主镜头 + AI 补全场景与转场的混合方案：成本可控、质感最稳，花纹复杂的款式也不会闪。含 2 次修改。', en: 'I recommend a hybrid: real-model footage for hero shots + AI for scenes and transitions — controlled cost, steadiest quality, and no flicker even on complex patterns. Two revisions included.' },
+          plan: [
+            { zh: '第 1–2 天：真人模特实拍主镜头', en: 'Days 1–2: real-model hero shots' },
+            { zh: '第 3–5 天：AI 补全场景与转场', en: 'Days 3–5: AI scenes & transitions' },
+            { zh: '第 6–7 天：精剪与双规格导出', en: 'Days 6–7: fine cut & dual-format export' },
+          ],
+          works: [
+            { grad: 'g1', emoji: '🎬', title: { zh: '女装实拍混剪案例', en: 'Womenswear hybrid showcase' }, views: '9.2k' },
+            { grad: 'g8', emoji: '👠', title: { zh: '鞋包配饰广告', en: 'Shoes & bags ad' }, views: '5.7k' },
+          ] },
+        { name: { zh: '半夏', en: 'Banxia' }, i: 'BX', g: 'g6', price: 1500, days: 3, time: { zh: '昨天', en: 'Yesterday' },
+          note: { zh: '纯 AI 模特方案，性价比最高：今天就能开工，逐件出片逐件确认，3 天交付全部 5 条。', en: 'Pure AI-model plan, best value: I can start today, confirm piece by piece, and deliver all 5 within 3 days.' },
+          plan: [
+            { zh: '当天开工，先交付 2 条', en: 'Start same day, first 2 videos delivered' },
+            { zh: '逐件确认风格，3 天内交齐 5 条', en: 'Confirm per piece, all 5 within 3 days' },
+          ],
+          works: [
+            { grad: 'g6', emoji: '👗', title: { zh: 'AI 模特换装合集', en: 'AI model try-on reel' }, views: '7.8k' },
+            { grad: 'g3', emoji: '🛍️', title: { zh: '快时尚信息流广告', en: 'Fast-fashion feed ads' }, views: '4.3k' },
+          ] },
       ],
     },
     {
-      id: 2, emoji: '☕', grad: 'g7', cat: 'food', status: 'open',
+      id: 2, emoji: '☕', grad: 'g7', cat: 'food', status: 'open', clientId: 2,
       title: { zh: '咖啡店新店开业宣传短片（30–45 秒）', en: 'Coffee shop grand-opening promo (30–45s)' },
       client: { name: { zh: '山见咖啡', en: 'Hillview Coffee' }, i: 'SJ', g: 'g7', verified: true, info: { zh: '杭州独立咖啡店 · 新商家', en: 'Independent café in Hangzhou · new client' } },
       budget: [1000, 1800], deadline: 10, joined: 5,
@@ -222,7 +263,7 @@ const DATA = {
       ],
     },
     {
-      id: 3, emoji: '📱', grad: 'g1', cat: 'ecom', status: 'open',
+      id: 3, emoji: '📱', grad: 'g1', cat: 'ecom', status: 'open', clientId: 3,
       title: { zh: '3C 新品：开箱 + 功能演示视频（2 条）', en: 'Gadget launch: unboxing + feature demo (2 videos)' },
       client: { name: { zh: '极风科技', en: 'Galewind Tech' }, i: 'JF', g: 'g1', verified: true, info: { zh: '深圳 3C 品牌 · 发布过 5 个需求', en: 'Shenzhen consumer-tech brand · 5 requests posted' } },
       budget: [2500, 3500], deadline: 14, joined: 6,
@@ -237,7 +278,7 @@ const DATA = {
       ],
     },
     {
-      id: 4, emoji: '📖', grad: 'g5', cat: 'anim', status: 'open',
+      id: 4, emoji: '📖', grad: 'g5', cat: 'anim', status: 'open', clientId: 4,
       title: { zh: '小说推文动画视频 × 20 条（长期合作）', en: 'Web-novel promo animations × 20 (long-term)' },
       client: { name: { zh: '阅星文化', en: 'Starread Media' }, i: 'YX', g: 'g5', verified: false, info: { zh: '小说分销机构 · 月需求量 80+ 条', en: 'Novel distribution agency · 80+ videos needed monthly' } },
       budget: [3000, 5000], deadline: 20, joined: 12,
@@ -264,12 +305,32 @@ const DATA = {
         { zh: '15 天内交付', en: 'Deliver within 15 days' },
       ],
       proposals: [
-        { name: { zh: '飞鸟视觉', en: 'Bird’s-eye Visuals' }, i: 'FN', g: 'g4', price: 2800, time: { zh: '1 天前', en: '1d ago' }, note: { zh: '持证飞手，莫干山拍过 6 家民宿，可顺路到店。', en: 'Licensed drone pilot; shot 6 B&Bs in Moganshan and can stop by.' } },
-        { name: { zh: 'Nova', en: 'Nova' }, i: 'NV', g: 'g8', price: 2200, time: { zh: '2 天前', en: '2d ago' }, note: { zh: '纯 AI 方案：照片转动态 + 生成航拍质感镜头，省去差旅。', en: 'Pure-AI plan: animate your photos + generate aerial-grade shots. No travel costs.' } },
+        { name: { zh: '飞鸟视觉', en: 'Bird’s-eye Visuals' }, i: 'FN', g: 'g4', price: 2800, days: 10, time: { zh: '1 天前', en: '1d ago' },
+          note: { zh: '持证飞手，莫干山片区拍过 6 家民宿，熟悉光线最好的时段和机位。可周末顺路到店，一天拍完航拍 + 室内。', en: 'Licensed drone pilot with 6 B&Bs shot in the Moganshan area — I know the best light windows and angles. Can stop by this weekend and cover aerials + interiors in one day.' },
+          plan: [
+            { zh: '周末到店：航拍外景 + 室内补拍', en: 'Weekend on-site: drone exteriors + interior pickups' },
+            { zh: '一周内出粗剪供选', en: 'Rough cut within a week' },
+            { zh: '交付 4K 主片 + 竖屏切片 2 条', en: '4K master + two vertical cutdowns' },
+          ],
+          works: [
+            { grad: 'g3', emoji: '🏞', title: { zh: '千岛湖民宿宣传片', en: 'Qiandao Lake B&B promo' }, views: '18k' },
+            { grad: 'g7', emoji: '🏔', title: { zh: '莫干山竹海航拍', en: 'Moganshan bamboo-sea aerials' }, views: '9.6k' },
+          ] },
+        { name: { zh: 'Nova', en: 'Nova' }, i: 'NV', g: 'g8', price: 2200, days: 8, time: { zh: '2 天前', en: '2d ago' },
+          note: { zh: '纯 AI 方案：你们的照片转动态 + 生成航拍质感镜头，省去差旅成本；会做两版风格（治愈系 / 电影感）供选。', en: 'Pure-AI plan: animate your photos + generate aerial-grade shots, zero travel cost. I’ll prepare two style options (cozy / cinematic) to choose from.' },
+          plan: [
+            { zh: '照片动态化 + AI 航拍镜头生成', en: 'Photo animation + AI aerial shots' },
+            { zh: '两版风格小样供选', en: 'Two style drafts to pick from' },
+            { zh: '8 天交付 60 秒成片 + 切片', en: 'Final 60s film + cutdowns in 8 days' },
+          ],
+          works: [
+            { grad: 'g8', emoji: '🌅', title: { zh: 'AI 风光样片合集', en: 'AI scenery reel' }, views: '11k' },
+            { grad: 'g1', emoji: '🏡', title: { zh: '庭院民宿概念片', en: 'Courtyard B&B concept film' }, views: '5.2k' },
+          ] },
       ],
     },
     {
-      id: 6, emoji: '🎯', grad: 'g8', cat: 'promo', status: 'open',
+      id: 6, emoji: '🎯', grad: 'g8', cat: 'promo', status: 'open', clientId: 5,
       title: { zh: '品牌 Logo 动画（5–8 秒，片头用）', en: 'Brand logo animation (5–8s opener)' },
       client: { name: { zh: '一刻运动', en: 'Onemoment Sports' }, i: 'YK', g: 'g8', verified: false, info: { zh: '健身品牌 · 新商家', en: 'Fitness brand · new client' } },
       budget: [500, 1000], deadline: 5, joined: 9,
@@ -428,6 +489,133 @@ const DATA = {
       deal: { zh: 'Pro 版 7 天试用', en: '7-day Pro trial' }, link: 'https://www.capcut.com' },
   ],
 
+  /* ---------- Clients (marketplace buyers) ---------- */
+  clients: [
+    {
+      id: 1, i: 'ML', g: 'g2', verified: true,
+      name: { zh: '茉莉女装', en: 'Jasmine Apparel' },
+      kind: { zh: '淘宝女装店 · 4 皇冠', en: 'Taobao womenswear · 4-crown' },
+      loc: { zh: '广州', en: 'Guangzhou' },
+      joined: { zh: '2025 年 6 月入驻', en: 'Joined Jun 2025' },
+      stats: { posted: 12, hired: 9, spent: '¥21,400', onpay: '100%' },
+      bio: { zh: '主营法式连衣裙与通勤女装，每季上新 20+ 款。长期需要上身展示视频与信息流素材，合作顺畅的创作者会转为月度长约。', en: 'We sell French-style dresses and office wear, launching 20+ pieces per season. Ongoing need for try-on videos and feed creatives; creators we click with move onto monthly retainers.' },
+      reviews: [
+        { name: { zh: '林可可', en: 'Coco Lin' }, i: 'LK', g: 'g3', rating: 5, time: { zh: '1 周前', en: '1w ago' }, text: { zh: '需求写得清楚，素材给得全，验收当天就打款。第三次合作了。', en: 'Clear briefs, complete assets, payment the same day as acceptance. Our third collaboration.' } },
+        { name: { zh: '阿杰', en: 'AJ' }, i: 'AJ', g: 'g4', rating: 5, time: { zh: '1 个月前', en: '1mo ago' }, text: { zh: '改稿意见具体不反复，是创作者最爱的那种商家。', en: 'Revision notes are specific and never flip-flop — the kind of client creators love.' } },
+      ],
+    },
+    {
+      id: 2, i: 'SJ', g: 'g7', verified: true,
+      name: { zh: '山见咖啡', en: 'Hillview Coffee' },
+      kind: { zh: '独立咖啡店', en: 'Independent café' },
+      loc: { zh: '杭州', en: 'Hangzhou' },
+      joined: { zh: '2026 年 5 月入驻', en: 'Joined May 2026' },
+      stats: { posted: 2, hired: 1, spent: '¥600', onpay: '100%' },
+      bio: { zh: '新店 6 月底开业，正在筹备开业宣传。喜欢温暖治愈的调性，希望和懂咖啡文化的创作者长期合作。', en: 'Opening late June and preparing launch promos. We love a warm, cozy tone and hope to work long-term with creators who get café culture.' },
+      reviews: [
+        { name: { zh: '张小川', en: 'Riley Zhang' }, i: 'ZX', g: 'g1', rating: 5, time: { zh: '2 周前', en: '2w ago' }, text: { zh: '老板娘沟通很舒服，需求明确，验收爽快。', en: 'Lovely to work with — clear asks and quick acceptance.' } },
+      ],
+    },
+    {
+      id: 3, i: 'JF', g: 'g1', verified: true,
+      name: { zh: '极风科技', en: 'Galewind Tech' },
+      kind: { zh: '深圳 3C 品牌', en: 'Shenzhen consumer-tech brand' },
+      loc: { zh: '深圳', en: 'Shenzhen' },
+      joined: { zh: '2025 年 9 月入驻', en: 'Joined Sep 2025' },
+      stats: { posted: 5, hired: 4, spent: '¥9,800', onpay: '100%' },
+      bio: { zh: '做桌面智能小家电，每季度 1–2 款新品。需要 Apple 风格的产品视频：开箱、功能演示、投放素材，长期合作优先。', en: 'We make smart desktop appliances with 1–2 launches per quarter. We need Apple-style product videos — unboxings, feature demos, ad creatives. Long-term partners preferred.' },
+      reviews: [
+        { name: { zh: '像素工坊', en: 'Pixel Works' }, i: 'PW', g: 'g5', rating: 5, time: { zh: '3 天前', en: '3d ago' }, text: { zh: '寄样机很快，反馈专业，是会尊重创作专业性的品牌方。', en: 'Sample units ship fast, feedback is professional — a brand that respects the craft.' } },
+      ],
+    },
+    {
+      id: 4, i: 'YX', g: 'g5', verified: false,
+      name: { zh: '阅星文化', en: 'Starread Media' },
+      kind: { zh: '小说分销机构', en: 'Novel distribution agency' },
+      loc: { zh: '成都', en: 'Chengdu' },
+      joined: { zh: '2025 年 12 月入驻', en: 'Joined Dec 2025' },
+      stats: { posted: 8, hired: 6, spent: '¥18,200', onpay: '92%' },
+      bio: { zh: '月需求量 80+ 条推文动画，量大稳定，适合想要稳定现金流的创作者或小团队。脚本由我们提供。', en: '80+ novel-promo animations needed monthly — high, steady volume, ideal for creators or small teams who want predictable cash flow. Scripts provided.' },
+      reviews: [
+        { name: { zh: '木鱼', en: 'Muyu' }, i: 'MY', g: 'g5', rating: 4, time: { zh: '2 周前', en: '2w ago' }, text: { zh: '量大管饱，结款偶尔慢两天但都会结，长期合作没问题。', en: 'Plenty of volume; payment occasionally runs two days late but always arrives. Fine for long-term work.' } },
+      ],
+    },
+    {
+      id: 5, i: 'YK', g: 'g8', verified: false,
+      name: { zh: '一刻运动', en: 'Onemoment Sports' },
+      kind: { zh: '健身品牌', en: 'Fitness brand' },
+      loc: { zh: '上海', en: 'Shanghai' },
+      joined: { zh: '2026 年 4 月入驻', en: 'Joined Apr 2026' },
+      stats: { posted: 2, hired: 1, spent: '¥800', onpay: '100%' },
+      bio: { zh: '新锐健身品牌，视觉上追求力量感与速度感。Logo 动画之后还会有系列课程片头与会员宣传片需求。', en: 'A young fitness brand chasing power and speed in its visuals. After the logo animation, course openers and membership promos are coming.' },
+      reviews: [
+        { name: { zh: '像素工坊', en: 'Pixel Works' }, i: 'PW', g: 'g5', rating: 5, time: { zh: '1 个月前', en: '1mo ago' }, text: { zh: '审美在线，一稿过，合作轻松。', en: 'Great taste, first-draft approval — easy collaboration.' } },
+      ],
+    },
+  ],
+
+  /* ---------- Instructors ---------- */
+  instructors: [
+    {
+      id: 1, i: 'LY', g: 'g5', name: { zh: '陆远', en: 'Lu Yuan' },
+      title: { zh: '前 MCN 内容总监 · 全网粉丝 120w', en: 'Ex-MCN content director · 1.2M followers' },
+      bio: { zh: '做了 8 年内容，带过 40 人的制作团队，现在专注教零基础的人做出第一支能发布的 AI 视频。我的信条：AI 让一个人也能产出一个团队的片子。', en: 'Eight years in content, formerly leading a 40-person production team. Now I teach complete beginners to publish their first AI video. My creed: AI lets one person ship what used to take a team.' },
+      courses: [1], gigId: null,
+      reviews: [
+        { name: { zh: '半夏', en: 'Banxia' }, i: 'BX', g: 'g6', rating: 5, time: { zh: '1 周前', en: '1w ago' }, text: { zh: '真·零基础友好，第一周就做出了能发出去的作品。', en: 'Genuinely beginner-friendly — I published a real piece in week one.' } },
+        { name: { zh: '小柚', en: 'Yuzu' }, i: 'XY', g: 'g4', rating: 5, time: { zh: '2 周前', en: '2w ago' }, text: { zh: '每节课都有作业和点评，不是看完就忘的那种课。', en: 'Every lesson has homework and feedback — not the watch-and-forget kind.' } },
+      ],
+    },
+    {
+      id: 2, i: 'QA', g: 'g2', name: { zh: '乔安', en: 'Joan Qiao' },
+      title: { zh: '服务 200+ 淘宝/抖音商家的视频操盘手', en: 'Video lead for 200+ Taobao & Douyin merchants' },
+      bio: { zh: '从详情页视频做到信息流投放素材，服务过 200+ 电商商家。课程里讲的每个方法都来自真实订单，学完就能在市场里接单用。', en: 'From product-page videos to paid-feed creatives, I’ve served 200+ e-commerce merchants. Every method in my course comes from real orders — use it in the marketplace the day you finish.' },
+      courses: [2], gigId: null,
+      reviews: [
+        { name: { zh: '林可可', en: 'Coco Lin' }, i: 'LK', g: 'g3', rating: 5, time: { zh: '3 天前', en: '3d ago' }, text: { zh: '靠第 5 课的方法接到了长期女装客户，课程费一单回本。', en: 'Lesson 5 landed me a long-term apparel client — the course paid for itself in one order.' } },
+        { name: { zh: '阿杰', en: 'AJ' }, i: 'AJ', g: 'g4', rating: 5, time: { zh: '1 个月前', en: '1mo ago' }, text: { zh: '作业墙的点评比课程本身还值钱。', en: 'The homework-wall feedback is worth more than the course itself.' } },
+      ],
+    },
+    {
+      id: 3, i: 'LS', g: 'g1', name: { zh: '黎声', en: 'Li Sheng' },
+      title: { zh: '数字人账号矩阵操盘手 · 单月营收 30w', en: 'Avatar-channel operator · ¥300k monthly revenue' },
+      bio: { zh: '运营 12 个数字人账号，从声音克隆到批量口播都是一线实操。课程附我自用的模板和工作流文件。', en: 'I run 12 avatar channels hands-on, from voice cloning to batch production. The course ships with my own templates and workflow files.' },
+      courses: [3], gigId: null,
+      reviews: [
+        { name: { zh: '一帆', en: 'Evan' }, i: 'YF', g: 'g6', rating: 5, time: { zh: '5 天前', en: '5d ago' }, text: { zh: '模板直接能用，第二周就跑起了自己的口播号。', en: 'Templates work out of the box — my own channel was running by week two.' } },
+      ],
+    },
+    {
+      id: 4, i: 'NV', g: 'g8', name: { zh: 'Nova', en: 'Nova' },
+      title: { zh: 'AIGC 视频大赛双料冠军', en: 'Two-time AIGC video competition champion' },
+      bio: { zh: '比起「会用工具」，我更想教你「指挥模型」：理解模型怎么想，提示词才能真正可控。课程配套 300+ 条提示词资产库。', en: 'Beyond using the tools, I teach you to direct the model: understand how it thinks and your prompts become truly controllable. Comes with a 300+ prompt asset library.' },
+      courses: [4], gigId: 5,
+      reviews: [
+        { name: { zh: '木鱼', en: 'Muyu' }, i: 'MY', g: 'g5', rating: 5, time: { zh: '1 周前', en: '1w ago' }, text: { zh: '上完课才知道以前的提示词都在碰运气。', en: 'After this course I realized my old prompts were just gambling.' } },
+        { name: { zh: '老白', en: 'Bai' }, i: 'LB', g: 'g7', rating: 5, time: { zh: '1 个月前', en: '1mo ago' }, text: { zh: '同行也来学习了，多镜头一致性那章是全网最清楚的讲法。', en: 'Even fellow pros are taking this — the shot-consistency chapter is the clearest explanation anywhere.' } },
+      ],
+    },
+    {
+      id: 5, i: 'LB', g: 'g7', name: { zh: '老白', en: 'Bai' },
+      title: { zh: '前广告公司剪辑指导 · 10 年经验', en: 'Ex-agency editing director · 10 years' },
+      bio: { zh: '剪过 500+ 支商业片。AI 素材时代，剪辑才是质感的分水岭——我教你把 AI 片段剪出实拍级的电影感。', en: '500+ commercial edits behind me. In the AI-footage era, editing is what separates premium from amateur — I’ll teach you to cut AI clips into cinema.' },
+      courses: [5], gigId: 2,
+      reviews: [
+        { name: { zh: 'Kude', en: 'Kude' }, i: 'KD', g: 'g3', rating: 5, time: { zh: '2 周前', en: '2w ago' }, text: { zh: '卡点那节课直接救了我的 MV。', en: 'The beat-cutting lesson straight-up saved my music video.' } },
+      ],
+    },
+    {
+      id: 6, i: 'SS', g: 'g3', name: { zh: '苏苏', en: 'Susu' },
+      title: { zh: 'AIV 市场 Top 创作者 · 复购率 62%', en: 'Top AIV marketplace creator · 62% repeat rate' },
+      bio: { zh: '我自己就在 AIV 市场接单：月均 30 单、复购率 62%。课程讲的是我每天在用的定价表、提案模板和沟通话术。', en: 'I sell on the AIV marketplace myself: ~30 orders a month at a 62% repeat rate. This course is the exact pricing sheets, proposal templates and scripts I use daily.' },
+      courses: [6], gigId: 3,
+      reviews: [
+        { name: { zh: '张小川', en: 'Riley Zhang' }, i: 'ZX', g: 'g1', rating: 5, time: { zh: '1 个月前', en: '1mo ago' }, text: { zh: '完课一个月接了 7 单，定价那章建议反复听三遍。', en: 'Seven orders within a month of finishing. Listen to the pricing chapter three times.' } },
+        { name: { zh: '木鱼', en: 'Muyu' }, i: 'MY', g: 'g5', rating: 5, time: { zh: '2 周前', en: '2w ago' }, text: { zh: '提案模板发 4 中 2，亲测有效。', en: 'Proposal template: 4 sent, 2 won. It just works.' } },
+      ],
+    },
+  ],
+
   /* ---------- Studio ---------- */
   generations: [
     { id: 1, status: 'done', grad: 'g2', aspect: '9:16', model: 'AIV Pro', dur: 5, prompt: { zh: '模特身穿白色连衣裙在日落海边行走，镜头缓慢环绕，电影感', en: 'A model in a white dress walking on a beach at sunset, slow orbit, cinematic' } },
@@ -451,8 +639,8 @@ const DATA = {
       { grad: 'g1', emoji: '📱', title: { zh: '桌面风扇开箱视频', en: 'Desk-fan unboxing video' }, views: '9.0k' },
     ],
     certs: [
-      { course: 2, date: { zh: '2025 年 11 月', en: 'Nov 2025' } },
-      { course: 6, date: { zh: '2026 年 1 月', en: 'Jan 2026' } },
+      { course: 2, serial: 1184, date: { zh: '2025 年 11 月', en: 'Nov 2025' } },
+      { course: 6, serial: 892, date: { zh: '2026 年 1 月', en: 'Jan 2026' } },
     ],
     ordersCreator: [
       { title: { zh: '服装上身视频 × 5 · 茉莉女装', en: 'Apparel try-on × 5 · Jasmine Apparel' }, amount: 1800, status: 'prog', due: { zh: '3 天后', en: 'in 3 days' }, i: 'ML', g: 'g2' },
