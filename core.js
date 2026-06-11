@@ -30,6 +30,10 @@ function L(v) {
   return v;
 }
 function money(n) { return '¥' + Number(n).toLocaleString('en-US'); }
+function matchQ(ql, ...fields) {
+  if (!ql) return true;
+  return fields.some(f => f && ((f.zh || '') + ' ' + (f.en || '')).toLowerCase().includes(ql));
+}
 function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
 
 /* ---- tiny components ---- */
@@ -73,7 +77,7 @@ function renderChrome() {
   const page = currentPage();
   const links = [
     ['home', t('nav_home')], ['courses', t('nav_courses')], ['market', t('nav_market')],
-    ['tools', t('nav_tools')], ['studio', t('nav_studio')],
+    ['studio', t('nav_studio')],
   ];
   $('#nav').innerHTML = `
     <div class="nav-inner container">
@@ -82,7 +86,7 @@ function renderChrome() {
         <span class="logo-text">${t('brand')}<small>${t('brandTag')}</small></span>
       </a>
       <nav class="nav-links">
-        ${links.map(([k, label]) => `<a href="#/${k}" class="${page === k || (k === 'courses' && page === 'course') || (k === 'market' && (page === 'brief' || page === 'gig')) ? 'on' : ''}">${label}</a>`).join('')}
+        ${links.map(([k, label]) => `<a href="#/${k}" class="${page === k || (k === 'courses' && (page === 'course' || page === 'instructor')) || (k === 'market' && (page === 'brief' || page === 'gig' || page === 'client' || page === 'proposal')) ? 'on' : ''}">${label}</a>`).join('')}
       </nav>
       <div class="nav-right">
         <button class="lang-btn" onclick="App.toggleLang()">🌐 ${t('langBtn')}</button>
@@ -101,7 +105,6 @@ function renderChrome() {
         <h5>${t('foot_product')}</h5>
         <a href="#/courses">${t('nav_courses')}</a>
         <a href="#/market">${t('nav_market')}</a>
-        <a href="#/tools">${t('nav_tools')}</a>
         <a href="#/studio">${t('nav_studio')}</a>
       </div>
       <div class="foot-col">
@@ -118,13 +121,13 @@ function renderChrome() {
 /* ---- router ---- */
 function parseHash() {
   const h = location.hash.replace(/^#\/?/, '');
-  const [page, id] = h.split('/');
-  return [page || 'home', id ? Number(id) : null];
+  const seg = h.split('/');
+  return [seg[0] || 'home', seg[1] !== undefined ? Number(seg[1]) : null, seg[2] !== undefined ? Number(seg[2]) : null];
 }
 function currentPage() { return parseHash()[0]; }
 
 function route() {
-  const [page, id] = parseHash();
+  const [page, id, id2] = parseHash();
   const app = $('#app');
   let html = '';
   switch (page) {
@@ -134,7 +137,10 @@ function route() {
     case 'market': html = pageMarket(); break;
     case 'brief': html = pageBrief(id); break;
     case 'gig': html = pageGig(id); break;
-    case 'tools': html = pageTools(); break;
+    case 'client': html = pageClient(id); break;
+    case 'instructor': html = pageInstructor(id); break;
+    case 'proposal': html = pageProposal(id, id2 || 0); break;
+    case 'tools': location.replace('#/studio'); return;
     case 'studio': html = pageStudio(); break;
     case 'profile': html = pageProfile(); break;
     default: html = pageHome();
@@ -166,6 +172,8 @@ const App = {
   setCourseTab(tab, cid) {
     state.courseTab = tab;
     $('#course-tabs-wrap').innerHTML = courseTabsHTML(DATA.courses.find(c => c.id === cid));
+    const list = $('#cr-list');
+    if (list) list.scrollTop = list.scrollHeight;
   },
   enrollModal(cid) {
     const c = DATA.courses.find(x => x.id === cid);
@@ -214,6 +222,55 @@ const App = {
     });
     toast(t('t_posted'));
     $('#course-tabs-wrap').innerHTML = courseTabsHTML(c);
+  },
+
+  /* ----- home search ----- */
+  heroSearch(q) {
+    q = (q || '').trim().toLowerCase();
+    state.marketQ = q;
+    if (q) {
+      const bHits = DATA.briefs.filter(b => matchQ(q, b.title, b.desc)).length;
+      const gHits = DATA.gigs.filter(g => matchQ(q, g.title)).length;
+      state.marketTab = (gHits >= bHits && gHits > 0) ? 'gigs' : 'briefs';
+      state.marketCat = 'all';
+    }
+    if (currentPage() === 'market') route(); else App.go('#/market');
+  },
+
+  /* ----- course live chat ----- */
+  sendCourseChat(cid) {
+    const input = $('#cr-input');
+    const val = input && input.value.trim();
+    if (!val) return;
+    const c = DATA.courses.find(x => x.id === cid);
+    if (!c.chat || !c.chat.length) c.chat = genericChat();
+    c.chat.push({ a: DATA.profile.name, i: DATA.profile.i, g: DATA.profile.g, me: true, time: { zh: '刚刚', en: 'just now' }, c: { zh: val, en: val } });
+    $('#course-tabs-wrap').innerHTML = courseTabsHTML(c);
+    const list = $('#cr-list');
+    if (list) list.scrollTop = list.scrollHeight;
+    setTimeout(() => {
+      const replies = [
+        { zh: '哈哈哈 +1', en: 'Haha +1' },
+        { zh: '同问！蹲一个答案', en: 'Same question! Following.' },
+        { zh: '我刚试过，把分辨率调到 1080p 就好了', en: 'Just tried it — switching to 1080p fixed it for me.' },
+        { zh: '这个老师在第 8 课讲过，可以回看一下', en: 'The instructor covered this in Lesson 8 — worth a rewatch.' },
+      ];
+      c.chat.push({ a: { zh: '小柚', en: 'Yuzu' }, i: 'XY', g: 'g4', time: { zh: '刚刚', en: 'just now' }, c: replies[val.length % replies.length] });
+      if (currentPage() === 'course' && state.courseTab === 'chat' && $('#course-tabs-wrap')) {
+        $('#course-tabs-wrap').innerHTML = courseTabsHTML(c);
+        const l2 = $('#cr-list');
+        if (l2) l2.scrollTop = l2.scrollHeight;
+      }
+    }, 1400);
+  },
+
+  /* ----- proposals ----- */
+  acceptProposal(bid, idx) {
+    const b = DATA.briefs.find(x => x.id === bid);
+    b.accepted = idx;
+    b.status = 'prog';
+    toast(t('t_accepted'));
+    route();
   },
 
   /* ----- marketplace ----- */
