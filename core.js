@@ -4,6 +4,7 @@ const $ = s => document.querySelector(s);
 
 const state = {
   lang: localStorage.getItem('aiv-lang') || 'zh',
+  theme: localStorage.getItem('aiv-theme') || 'dark',
   tokens: DATA.profile.tokens,
   enrolled: { ...ENROLLED_INIT },          // courseId -> progress %
   marketTab: 'briefs',
@@ -89,8 +90,9 @@ function renderChrome() {
         ${links.map(([k, label]) => `<a href="#/${k}" class="${page === k || (k === 'courses' && (page === 'course' || page === 'instructor')) || (k === 'market' && (page === 'brief' || page === 'gig' || page === 'client' || page === 'proposal')) ? 'on' : ''}">${label}</a>`).join('')}
       </nav>
       <div class="nav-right">
+        <button class="theme-btn" onclick="App.toggleTheme()" title="${t('themeBtn')}">${state.theme === 'dark' ? '☀' : '◐'}</button>
         <button class="lang-btn" onclick="App.toggleLang()">🌐 ${t('langBtn')}</button>
-        <button class="token-pill" onclick="App.buyTokensModal()" title="${t('buyTokens')}">⬡ <b id="nav-tokens">${state.tokens.toLocaleString()}</b></button>
+        <button class="token-pill" onclick="App.buyTokensModal()" title="${t('buyTokens')}"><b id="nav-tokens">${state.tokens.toLocaleString()}</b></button>
         <a class="nav-avatar ${page === 'profile' ? 'on' : ''}" href="#/profile" title="${t('nav_profile')}">${av(DATA.profile.i, DATA.profile.g)}</a>
       </div>
     </div>`;
@@ -161,6 +163,13 @@ const App = {
     localStorage.setItem('aiv-lang', state.lang);
     document.documentElement.lang = state.lang === 'zh' ? 'zh-CN' : 'en';
     document.title = t('docTitle');
+    route();
+  },
+
+  toggleTheme() {
+    state.theme = state.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('aiv-theme', state.theme);
+    document.documentElement.setAttribute('data-theme', state.theme);
     route();
   },
 

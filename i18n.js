@@ -12,6 +12,7 @@ const I18N = {
     nav_studio: '工作室',
     nav_profile: '个人主页',
     langBtn: 'EN',
+    themeBtn: '切换主题',
 
     // hero (simple, Fiverr-style)
     hero_title: 'AI 视频，从学会到接单变现',
@@ -325,6 +326,7 @@ const I18N = {
     nav_studio: 'Studio',
     nav_profile: 'Profile',
     langBtn: '中文',
+    themeBtn: 'Toggle theme',
 
     hero_title: 'AI video: learn it, then get hired for it',
     hero_sub: 'Courses to learn, a marketplace to earn, a studio to create — three steps, one loop.',

@@ -1039,5 +1039,6 @@ function pageProfile() {
 
 /* ================= boot ================= */
 document.documentElement.lang = state.lang === 'zh' ? 'zh-CN' : 'en';
+document.documentElement.setAttribute('data-theme', state.theme);
 document.title = t('docTitle');
 route();
